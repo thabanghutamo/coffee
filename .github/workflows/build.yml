@@ -1,0 +1,139 @@
+name: Build VST Plugin
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          cmake \
+          ninja-build \
+          libasound2-dev \
+          libx11-dev \
+          libxext-dev \
+          libxrandr-dev \
+          libxinerama-dev \
+          libxcursor-dev \
+          libfreetype6-dev \
+          libwebkit2gtk-4.0-dev \
+          libcurl4-openssl-dev
+    
+    - name: Clone JUCE
+      run: |
+        git clone --depth 1 --branch 7.0.9 \
+          https://github.com/juce-framework/JUCE.git external/JUCE
+    
+    - name: Configure CMake
+      run: |
+        cmake -B build -G Ninja \
+          -DCMAKE_BUILD_TYPE=Release
+    
+    - name: Build
+      run: cmake --build build --config Release -j4
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: VocalMIDI-Linux
+        path: |
+          build/VocalMIDI_artefacts/Release/VST3/
+          build/VocalMIDI_artefacts/Release/Standalone/
+  
+  build-macos:
+    runs-on: macos-12
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Install dependencies
+      run: |
+        brew install cmake ninja
+    
+    - name: Clone JUCE
+      run: |
+        git clone --depth 1 --branch 7.0.9 \
+          https://github.com/juce-framework/JUCE.git external/JUCE
+    
+    - name: Configure CMake
+      run: |
+        cmake -B build -G Ninja \
+          -DCMAKE_BUILD_TYPE=Release
+    
+    - name: Build
+      run: cmake --build build --config Release -j4
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: VocalMIDI-macOS
+        path: |
+          build/VocalMIDI_artefacts/Release/VST3/
+          build/VocalMIDI_artefacts/Release/AU/
+          build/VocalMIDI_artefacts/Release/Standalone/
+  
+  build-windows:
+    runs-on: windows-2022
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Clone JUCE
+      run: |
+        git clone --depth 1 --branch 7.0.9 `
+          https://github.com/juce-framework/JUCE.git external/JUCE
+    
+    - name: Configure CMake
+      run: |
+        cmake -B build -G "Visual Studio 17 2022" -A x64 `
+          -DCMAKE_BUILD_TYPE=Release
+    
+    - name: Build
+      run: cmake --build build --config Release -j4
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: VocalMIDI-Windows
+        path: |
+          build/VocalMIDI_artefacts/Release/VST3/
+          build/VocalMIDI_artefacts/Release/Standalone/
+  
+  test-python:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        cd ml_training
+        pip install -r requirements.txt
+    
+    - name: Test model imports
+      run: |
+        cd ml_training
+        python -c "from models import CNNLSTMPitchModel; print('✓ Models loaded')"
+        python -c "from models import MultiTrackMIDIGAN; print('✓ GAN loaded')"
+        python -c "from utils import AudioMIDIDatasetPreprocessor; print('✓ Utils loaded')"

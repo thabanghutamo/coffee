@@ -1,0 +1,112 @@
+[  1%] Building CXX object CMakeFiles/juce_vst3_helper.dir/external/JUCE/modules/juce_audio_plugin_client/VST3/juce_VST3ManifestHelper.cpp.o
+[  3%] Building CXX object CMakeFiles/VocalMIDI.dir/external/JUCE/modules/juce_audio_processors/juce_audio_processors_ara.cpp.o
+[  5%] Building CXX object CMakeFiles/VocalMIDI.dir/src/threading/AudioMLBridge.cpp.o
+[  7%] Building CXX object CMakeFiles/VocalMIDI.dir/external/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o
+[  9%] Building CXX object CMakeFiles/VocalMIDI.dir/external/JUCE/modules/juce_audio_processors/juce_audio_processors_lv2_libs.cpp.o
+[ 10%] Building CXX object CMakeFiles/VocalMIDI.dir/external/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o
+[ 12%] Linking CXX executable juce_vst3_helper
+[ 12%] Built target juce_vst3_helper
+[ 14%] Building CXX object CMakeFiles/VocalMIDI.dir/external/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
+In file included from /workspaces/coffee/src/threading/AudioMLBridge.cpp:1:
+/workspaces/coffee/src/threading/AudioMLBridge.h: In constructor ‘LockFreeFIFO<T>::LockFreeFIFO(size_t)’:
+/workspaces/coffee/src/threading/AudioMLBridge.h:18:34: warning: declaration of ‘capacity’ shadows a member of ‘LockFreeFIFO<T>’ [-Wshadow]
+   18 |     explicit LockFreeFIFO(size_t capacity)
+      |                           ~~~~~~~^~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:134:12: note: shadowed declaration is here
+  134 |     size_t capacity;
+      |            ^~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h: At global scope:
+/workspaces/coffee/src/threading/AudioMLBridge.h:155:22: error: field ‘pitchInfo’ has incomplete type ‘PitchInfo’
+  155 |     struct PitchInfo pitchInfo;
+      |                      ^~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:155:12: note: forward declaration of ‘struct PitchInfo’
+  155 |     struct PitchInfo pitchInfo;
+      |            ^~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:156:23: error: field ‘rhythmInfo’ has incomplete type ‘RhythmInfo’
+  156 |     struct RhythmInfo rhythmInfo;
+      |                       ^~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:156:12: note: forward declaration of ‘struct RhythmInfo’
+  156 |     struct RhythmInfo rhythmInfo;
+      |            ^~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:192:26: error: field ‘midiData’ has incomplete type ‘GeneratedMIDI’
+  192 |     struct GeneratedMIDI midiData;
+      |                          ^~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:192:12: note: forward declaration of ‘struct GeneratedMIDI’
+  192 |     struct GeneratedMIDI midiData;
+      |            ^~~~~~~~~~~~~
+In file included from /workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_api.h:27,
+                 from /workspaces/coffee/src/ml/ModelInference.h:11,
+                 from /workspaces/coffee/src/threading/AudioMLBridge.cpp:2:
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_float16.h: In lambda function:
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_float16.h:493:16: warning: declaration of ‘result’ shadows a previous local [-Wshadow]
+  493 |       uint16_t result;
+      |                ^~~~~~
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_float16.h:488:12: note: shadowed declaration is here
+  488 |   uint16_t result;
+      |            ^~~~~~
+In file included from /workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_api.h:2266:
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_inline.h: In lambda function:
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_inline.h:1088:54: warning: declaration of ‘out’ shadows a previous local [-Wshadow]
+ 1088 |   auto strings_deletor = [&deletor, num_keys](char** out) { for(int64_t i = 0; i < num_keys; ++i) deletor(out[i]); };
+      |                                               ~~~~~~~^~~
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_inline.h:1078:10: note: shadowed declaration is here
+ 1078 |   char** out = nullptr;
+      |          ^~~
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_inline.h: In lambda function:
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_inline.h:1853:35: warning: declaration of ‘providers’ shadows a previous local [-Wshadow]
+ 1853 |   auto release_fn = [&len](char** providers) {
+      |                            ~~~~~~~^~~~~~~~~
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_inline.h:1850:10: note: shadowed declaration is here
+ 1850 |   char** providers;
+      |          ^~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.cpp: In constructor ‘MLInferenceThread::MLInferenceThread(AudioMLBridge&, ModelInference&)’:
+/workspaces/coffee/src/threading/AudioMLBridge.cpp:75:77: warning: declaration of ‘modelInference’ shadows a member of ‘MLInferenceThread’ [-Wshadow]
+   75 | MLInferenceThread::MLInferenceThread(AudioMLBridge& bridge, ModelInference& modelInference)
+      |                                                             ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:308:21: note: shadowed declaration is here
+  308 |     ModelInference& modelInference;
+      |                     ^~~~~~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.cpp:75:53: warning: declaration of ‘bridge’ shadows a member of ‘MLInferenceThread’ [-Wshadow]
+   75 | MLInferenceThread::MLInferenceThread(AudioMLBridge& bridge, ModelInference& modelInference)
+      |                                      ~~~~~~~~~~~~~~~^~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:307:20: note: shadowed declaration is here
+  307 |     AudioMLBridge& bridge;
+      |                    ^~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.cpp: In constructor ‘MLInferenceThread::MLInferenceThread(AudioMLBridge&, ModelInference&)’:
+/workspaces/coffee/src/threading/AudioMLBridge.cpp:75:77: warning: declaration of ‘modelInference’ shadows a member of ‘MLInferenceThread’ [-Wshadow]
+   75 | MLInferenceThread::MLInferenceThread(AudioMLBridge& bridge, ModelInference& modelInference)
+      |                                                             ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:308:21: note: shadowed declaration is here
+  308 |     ModelInference& modelInference;
+      |                     ^~~~~~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.cpp:75:53: warning: declaration of ‘bridge’ shadows a member of ‘MLInferenceThread’ [-Wshadow]
+   75 | MLInferenceThread::MLInferenceThread(AudioMLBridge& bridge, ModelInference& modelInference)
+      |                                      ~~~~~~~~~~~~~~~^~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:307:20: note: shadowed declaration is here
+  307 |     AudioMLBridge& bridge;
+      |                    ^~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.cpp: In constructor ‘MLInferenceThread::MLInferenceThread(AudioMLBridge&, ModelInference&)’:
+/workspaces/coffee/src/threading/AudioMLBridge.cpp:75:77: warning: declaration of ‘modelInference’ shadows a member of ‘MLInferenceThread’ [-Wshadow]
+   75 | MLInferenceThread::MLInferenceThread(AudioMLBridge& bridge, ModelInference& modelInference)
+      |                                                             ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:308:21: note: shadowed declaration is here
+  308 |     ModelInference& modelInference;
+      |                     ^~~~~~~~~~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.cpp:75:53: warning: declaration of ‘bridge’ shadows a member of ‘MLInferenceThread’ [-Wshadow]
+   75 | MLInferenceThread::MLInferenceThread(AudioMLBridge& bridge, ModelInference& modelInference)
+      |                                      ~~~~~~~~~~~~~~~^~~~~~
+/workspaces/coffee/src/threading/AudioMLBridge.h:307:20: note: shadowed declaration is here
+  307 |     AudioMLBridge& bridge;
+      |                    ^~~~~~
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_float16.h: In instantiation of ‘static uint16_t onnxruntime_float16::BFloat16Impl<Derived>::ToUint16Impl(float) [with Derived = Ort::BFloat16_t; uint16_t = short unsigned int]’:
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_cxx_api.h:333:67:   required from here
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_float16.h:493:16: warning: declaration of ‘result’ shadows a previous local [-Wshadow]
+  493 |       uint16_t result;
+      |                ^~~~~~
+/workspaces/coffee/external/onnxruntime/include/onnxruntime_float16.h:488:12: note: shadowed declaration is here
+  488 |   uint16_t result;
+      |            ^~~~~~
+gmake[2]: *** [CMakeFiles/VocalMIDI.dir/build.make:342: CMakeFiles/VocalMIDI.dir/src/threading/AudioMLBridge.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:155: CMakeFiles/VocalMIDI.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2

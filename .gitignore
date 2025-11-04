@@ -1,0 +1,88 @@
+# Build directories
+build/
+build-*/
+cmake-build-*/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Compiled files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+
+# JUCE
+JuceLibraryCode/
+*.jucer
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+
+# ML Training
+ml_training/checkpoints/
+ml_training/datasets/raw/
+ml_training/datasets/processed/
+*.pth
+*.onnx
+*.pb
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Models (large files)
+models/*.onnx
+models/*.bin
+
+# Logs
+*.log
+logs/
+
+# User data
+*.preset
+user_settings.json
